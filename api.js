@@ -8,7 +8,7 @@ const mdLinks = (path, options) => {
 
 mdLinks("README.md", { validate: true });
 
-// CONSULTAR SI LA RUTA EXISTE
+// CONSULTAR SI LA RUTA EXISTENOD
 const pathexist = (mdPath) => fs.existsSync(mdPath);
 //return fs.existsSync(mdPath);
 console.log(pathexist("README.md"));
@@ -28,7 +28,7 @@ console.log(absolute("README.md"));
 //VERIFICAR SI ES UN ARCHIVO MAR
 const mdFile = (mdPath) => path.extname(mdPath);
 console.log(mdFile("README.md"));
-if (mdFile(".md") === ".md") console.log("Si es un archivo markDown");
+if (mdFile("README.md") === ".md") console.log("Si es un archivo markDown");
 else console.log("No es un archivo markDown");
 
 // verificar si tiene links
