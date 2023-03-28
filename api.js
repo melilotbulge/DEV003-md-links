@@ -2,21 +2,26 @@ const fs = require("fs");
 const path = require("path");
 
 const mdLinks = (path, options) => {
-  // aqui va toda la logica de md links
-  // llamar a md links
+  let rutaAbsoluta = path;
+  if (pathexist(path) === false) {
+    throw Error("La ruta no existe");
+  }
+  if (absolutePath(path) === false) {
+    rutaAbsoluta = absolute(path);
+  }
 };
 
 mdLinks("README.md", { validate: true });
 
-// CONSULTAR SI LA RUTA EXISTENOD
+// CONSULTAR SI LA RUTA EXISTE
 const pathexist = (mdPath) => fs.existsSync(mdPath);
-//return fs.existsSync(mdPath);
+
 console.log(pathexist("README.md"));
 
 //VERIFICAR SI LA RUTA ES ABSOLUTA O NO
 
 const absolutePath = (mdPath) => path.isAbsolute(mdPath);
-// return path.isAbsolute(mdPath);
+
 console.log(absolutePath("README.md"));
 
 // SINO ES ABSOLUTA CAMBIAR A ABSOLUTA
@@ -25,11 +30,16 @@ console.log(absolute("README.md"));
 
 //leer el archivo ir a const mdlinks linea 4
 
-//VERIFICAR SI ES UN ARCHIVO MAR
-const mdFile = (mdPath) => path.extname(mdPath);
-console.log(mdFile("README.md"));
-if (mdFile("README.md") === ".md") console.log("Si es un archivo markDown");
-else console.log("No es un archivo markDown");
+//VERIFICAR SI ES UN ARCHIVO MARkdown
+const mdFile = (mdPath) => {
+  const ext = path.extname(mdPath);
+  if (ext === ".md") {
+    return true;
+  } else {
+    return false;
+  }
+};
+console.log(mdFile("package.json"));
 
 // verificar si tiene links
 
