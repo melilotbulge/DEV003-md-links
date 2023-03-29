@@ -1,17 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const mdLinks = (path, options) => {
-  let rutaAbsoluta = path;
-  if (pathexist(path) === false) {
-    throw Error("La ruta no existe");
-  }
-  if (absolutePath(path) === false) {
-    rutaAbsoluta = absolute(path);
-  }
-};
-
-mdLinks("README.md", { validate: true });
+//mdLinks("README.md", { validate: true });
 
 // CONSULTAR SI LA RUTA EXISTE
 const pathexist = (mdPath) => fs.existsSync(mdPath);
@@ -46,7 +36,7 @@ console.log(mdFile("package.json"));
 //obtener los link
 
 module.exports = {
-  mdLinks,
+  //mdLinks,
   pathexist,
   absolutePath,
   absolute,
