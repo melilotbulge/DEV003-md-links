@@ -23,7 +23,7 @@ console.log(absolutePath("README.md"));
 const absolute = (mdPath) => path.resolve(mdPath);
 console.log(absolute("README.md"));
 
-//leer el archivo ir a const mdlinks linea 4
+//leer el archivo ir a const mdlinks linea 4 , no  recuerdo a que se refiere
 
 //VERIFICAR SI ES UN ARCHIVO MAR
 const mdFile = (mdPath) => path.extname(mdPath);
