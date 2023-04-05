@@ -23,9 +23,28 @@ console.log(absolutePath("README.md"));
 const absolute = (mdPath) => path.resolve(mdPath);
 console.log(absolute("README.md"));
 
-//leer el archivo ir a const mdlinks linea 4 , no  recuerdo a que se refiere
+//leer el archivo ir a const mdlinks linea 4
 
-//VERIFICAR SI ES UN ARCHIVO MAR
+const readFile = (mdPath) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(mdPath, "utf8", (err, data) => {
+      if (err) {
+        reject("No fue posible leer el contenido");
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+readFile("README.md")
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+//VERIFICAR SI ES UN ARCHIVO MARKDOWN
 const mdFile = (mdPath) => path.extname(mdPath);
 console.log(mdFile("README.md"));
 if (mdFile(".md") === ".md") console.log("Si es un archivo markDown");
