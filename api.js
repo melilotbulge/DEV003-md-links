@@ -36,13 +36,6 @@ const readFile = (mdPath) => {
     });
   });
 };
-readFile("README.md")
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 //VERIFICAR SI ES UN ARCHIVO MARKDOWN
 const mdFile = (mdPath) => path.extname(mdPath);
@@ -50,9 +43,22 @@ console.log(mdFile("README.md"));
 if (mdFile(".md") === ".md") console.log("Si es un archivo markDown");
 else console.log("No es un archivo markDown");
 
-// verificar si tiene links
+// verificar si tiene links obtener los link
+const getLinks = (fileContent, mdPath) => {
+  const regExLink = /\[([^\[]+)\](\(.*\))/g;
+  const array = fileContent.match(regExLink);
+  //console.log(fileContent);
+  console.log(array);
+};
 
-//obtener los link
+readFile("README.md")
+  .then((result) => {
+    //console.log(result);
+    getLinks(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 module.exports = {
   mdLinks,
