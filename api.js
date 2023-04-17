@@ -46,19 +46,36 @@ else console.log("No es un archivo markDown");
 // verificar si tiene links obtener los link
 const getLinks = (fileContent, mdPath) => {
   const regExLink = /\[([^\[]+)\](\(.*\))/g;
-  const array = fileContent.match(regExLink);
-  //console.log(fileContent);
-  console.log(array);
+  const matches = fileContent.match(regExLink);
+
+  //console.log(matches);
+
+  const singleMatch = /\[([^\[]+)\]\((.*)\)/;
+  const resultLinks = [];
+
+  for (let i = 0; i < matches.length; i++) {
+    let matchedLink = singleMatch.exec(matches[i]);
+    let linkObject = {
+      href: matchedLink[2],
+      text: matchedLink[1],
+      file: mdPath,
+    };
+    resultLinks.push(linkObject);
+  }
+
+  return resultLinks;
 };
 
 readFile("README.md")
   .then((result) => {
-    //console.log(result);
-    getLinks(result);
+    console.log(result);
+    console.log(getLinks(result, "README.md"));
   })
   .catch((err) => {
     console.log(err);
   });
+
+//para validar los link dentro del array (resultLinks) creado en getLinks
 
 module.exports = {
   mdLinks,
@@ -66,4 +83,6 @@ module.exports = {
   absolutePath,
   absolute,
   mdFile,
+  readFile,
+  getLinks,
 };
