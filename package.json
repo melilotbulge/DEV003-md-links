@@ -15,6 +15,7 @@
     "test": "jest --verbose --coverage"
   },
   "dependencies": {
+    "@laboratoria/curriculum-parser": "github:Laboratoria/course-parser",
     "eslint": "^8.35.0"
   },
   "devDependencies": {
